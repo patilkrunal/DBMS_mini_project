@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block page_title %}Register{% endblock %}
+{% block body %}
+<div align="center" class="registercls"> 
+  <div align="center" class="border"> 
+    <div class="header"> 
+      <h1 class="word">Register</h1> 
+    </div>
+    
+    <h2 class="word"> 
+      <form action="{{ url_for('register') }}" method="post"> 
+      <div class="msg">{{ msg }}</div> 
+        <input id="username" name="username" type="text" placeholder="Enter Your Username" class="textbox"/></br></br> 
+        <input id="password" name="password" type="password" placeholder="Enter Your Password" class="textbox"/></br></br> 
+        <input type="submit" class="btn" value="Sign Up"></br> 
+      </form> 
+    </h2> 
+    
+    <p class="bottom">Already have an account? <a class="bottom" href="{{url_for('FUN_root')}}"> Sign In here</a></p> 
+  </div> 
+</div> 
+
+<style>
+  .registercls {
+    min-height: 93.6vh;
+    background-image: url('static/img/wallpaper.jpg');
+    background-repeat: round;
+    background-size: cover;
+    background-position: bottom;
+  }
+</style>
+{% endblock body %}

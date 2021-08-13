@@ -1,0 +1,69 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.united.css') }}">  
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">			 
+
+  <title>SecretAPP - DBMS-Flask-Project</title>
+
+  <nav class="navbar navbar-dark bg-dark" style="background-color: #000000; margin:0%">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+        </button>
+        <a href="/"><img src="{{url_for('static', filename='img/logo.png')}}" alt="logo" style="width: 170px;"></a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          {% if session.get("current_user", None) != None %}
+            <li><a href="/private/">Private</a></li>
+          {% endif%}
+          {% if session.get("current_user", None) == "ADMIN" %}
+            <li><a href="/admin">Admin Dashboard</a></li>
+          {% endif %}
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+          {% if session.get("current_user", None) == None %}
+            <form action="/login" method="post" class="navbar-form navbar-right">
+              <div class="form-group">
+                <input type="text" name="username" placeholder="User Name" class="form-control">
+              </div>
+              <div class="form-group">
+                <input type="password" name="password" placeholder="Password" class="form-control">
+              </div>
+              <button type="submit" class="btn btn-success">Log In</button>
+            </form>
+
+            <a href="/register" class="btn btn-success">Register</a>
+          {% else %}
+            <li>
+              <a><b>{{ session.get("current_user") }}</b></a></li>
+            <li><a href="/logout"><b><u>Logout</u></b></a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+  <div class="wrapper flex-grow-1" style="height: 86vh;">
+    {% block body %}{% endblock %}
+  </div>
+
+  <footer class="container page-footer font-small purple pt-4 fixed-bottom">
+    <h4 style="font-weight: bold;color: white;text-align: center;">Made as DBMS Mini_project</h4>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</body>
+
+</html>

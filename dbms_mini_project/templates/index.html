@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block page_title %}Welcome{% endblock %}
+{% block body %}
+<div class="index" style="display: flex;">
+  {{ super() }}
+
+  <h1>{{ msg }}</h1>
+  <hr><hr><hr>
+  <table class="table">
+    <thead>
+      <tr><th scope="col">Username</th><th scope="col">Password</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>admin</td><td>admin</td></tr>
+      <tr><td>krunal</td><td>admin</td></tr>
+      <tr><td>swapnil</td><td>admin</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .index {
+    min-height: 93.6vh;
+    background-image: url('static/img/wallpaper.jpg');
+    background-repeat: round;
+    background-size: cover;
+  }
+  .table{
+    font-size: larger;
+    color: white;
+    position: absolute;
+    max-width: fit-content;
+    align-self: flex-end;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+  </style>
+{% endblock %}
